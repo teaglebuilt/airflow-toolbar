@@ -1,6 +1,58 @@
+# specifics
+.vscode
 env
 logs
 airflow.db
 unittests.cfg
 airflow.cfg
 dev-requirements.txt
+airflow-webserver.pid
+
+# python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# unit tests
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
