@@ -5,7 +5,6 @@ logs
 airflow.db
 unittests.cfg
 airflow.cfg
-dev-requirements.txt
 airflow-webserver.pid
 
 # python cache
