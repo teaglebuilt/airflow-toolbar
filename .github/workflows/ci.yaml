@@ -28,3 +28,9 @@ jobs:
       run: |
         echo ::set-output name=version:: \
           $(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+      
+    - name: Setup Workspace
+      run: sh ./dev.sh setup
+
+    - name: Run Unit Tests
+      run: pytest tests/

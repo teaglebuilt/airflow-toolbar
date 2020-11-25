@@ -13,7 +13,10 @@ setup_dev() {
         --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.8.txt"
 
         echo "building requirements.txt"
-        pip freeze > dev-requirements.txt
+        pip freeze > requirements.txt
+
+        echo "Install dev dependencies"
+        pip install -r dev-requirements.txt
     fi
     # set airflow config
     echo "setting airflow configurations at $AIRFLOW_HOME"
