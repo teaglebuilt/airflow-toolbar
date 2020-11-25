@@ -30,7 +30,7 @@ jobs:
           $(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
       
     - name: Setup Workspace
-      run: sh ./dev.sh setup
+      run: sh ./dev.sh setup-dev
 
     - name: Run Unit Tests
       run: pytest tests/
