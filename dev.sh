@@ -1,6 +1,37 @@
 #!/bin/sh
 
 
+prompt='Choose airflow version: '
+airflow_versions=("1.10" "2.0")
+python_versions=("3.5" "3.6" "3.7" "3.8")
+ver=$(python -V 2>&1 | sed 's/.* \([0-9]\).\([0-9]\).*/\1\2/')
+AIRFLOW_VERSION="1.10"
+
+
+# select v in "${airflow_versions[@]}"; do
+#     case v in
+#         "2.0") AIRFLOW_VERSION="constraints-2-0";;
+#         "1.10") AIRFLOW_VERSION="constraints-1.10.12";;
+#     esac
+# done
+
+
+install_dependencies() {
+    case $ver in
+        "38")
+            echo "installing airflow ${AIRFLOW_VERSION} dependencies with $(python -V 2>&1)"
+            pip install apache-airflow==${AIRFLOW_VERSION} \
+            --constraint "https://raw.githubusercontent.com/apache/airflow/${AIRFLOW_VERSION}/constraints-3.8.txt"
+            ;;
+        "37")
+            echo "installing airflow ${AIRFLOW_VERSION} dependencies with $(python -V 2>&1)"
+             pip install apache-airflow==${AIRFLOW_VERSION} \
+            --constraint "https://raw.githubusercontent.com/apache/airflow/${AIRFLOW_VERSION}/constraints-3.7.txt"
+            ;;
+        *) echo "python version not compatible";;
+    esac
+}
+
 setup_dev() {
     if [ -f .env ]; then
     # Load Environment Variables
@@ -9,10 +40,9 @@ setup_dev() {
     fi
 
     if [ ! -f requirements.txt ]; then
-        echo "installing airflow dependencies for python3.8"
-        pip install apache-airflow==1.10.12 \
-        --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.8.txt"
 
+        install_dependencies
+        
         echo "building requirements.txt"
         pip freeze > requirements.txt
 
