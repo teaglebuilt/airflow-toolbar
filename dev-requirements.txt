@@ -4,13 +4,21 @@
 #
 #    pip-compile --output-file=dev-requirements.txt requirements/dev.txt
 #
+astroid==2.4.2            # via pylint
 attrs==20.3.0             # via pytest
+coverage==5.3             # via -r requirements/dev.txt, pytest-cov
 iniconfig==1.1.1          # via pytest
+isort==5.6.4              # via pylint
+lazy-object-proxy==1.4.3  # via astroid
+mccabe==0.6.1             # via pylint
 packaging==20.4           # via pytest
 pluggy==0.13.1            # via pytest
 py==1.9.0                 # via pytest
+pylint==2.6.0             # via -r requirements/dev.txt
 pyparsing==2.4.7          # via packaging
-pytest==6.1.2             # via -r requirements/dev.txt
-six==1.15.0               # via packaging
-toml==0.10.2              # via pytest
+pytest-cov==2.10.1        # via -r requirements/dev.txt
+pytest==6.1.2             # via -r requirements/dev.txt, pytest-cov
+six==1.15.0               # via astroid, packaging
+toml==0.10.2              # via pylint, pytest
 unittest2pytest==0.4      # via -r requirements/dev.txt
+wrapt==1.12.1             # via astroid
