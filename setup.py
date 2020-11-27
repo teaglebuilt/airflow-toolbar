@@ -7,5 +7,6 @@ setup(
         'airflow.plugins': [
             'my_plugin = src.plugin:AirflowToolbar'
         ]
-    }
+    },
+    extras_require={}
 )

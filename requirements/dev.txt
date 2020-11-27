@@ -1,2 +1,5 @@
+coverage==5.3
+pylint==2.6.0
 pytest==6.1.2
+pytest-cov==2.10.1
 unittest2pytest==0.4
