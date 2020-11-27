@@ -4,7 +4,8 @@
 setup_dev() {
     if [ -f .env ]; then
     # Load Environment Variables
-        export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
+        export AIRFLOW_HOME=$(pwd)
+        # export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
     fi
 
     if [ ! -f requirements.txt ]; then
