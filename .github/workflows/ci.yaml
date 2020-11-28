@@ -33,7 +33,7 @@ jobs:
       run: sh ./dev.sh setup-dev
 
     - name: Run Unit Tests
-      run: pytest --cov=./ --cov-report=xml
+      run: pytest --cov=./src --cov-report=xml
 
     - uses: codecov/codecov-action@v1
       with:
