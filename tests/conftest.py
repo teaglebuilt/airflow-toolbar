@@ -7,6 +7,7 @@ import pytest
 @pytest.fixture
 def mock_env() -> ContextManager[dict]:
     with patch.dict('os.environ', {
-        "AIRFLOW_HOME": os.path.abspath(os.curdir)
+        "AIRFLOW_HOME": os.path.abspath(os.curdir),
+        "PYTHONPATH": os.path.abspath(os.curdir)
     }) as mock_env:
         yield mock_env
