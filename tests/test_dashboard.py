@@ -7,7 +7,7 @@ from flask import config
 
 def test_dashboard_view():
     app = application.create_app(testing=True)
-    config['WTF_CSRF_ENABLED'] = False
+    app.config['WTF_CSRF_ENABLED'] = False
     client = app.test_client()
     resp = client.get('http://localhost:8080/admin/dashboardview/')
     assert resp.status_code == 200
