@@ -30,10 +30,9 @@ jobs:
           $(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
       
     - name: Setup Workspace
-      run: sh ./dev.sh setup-dev
-
-    - name: Run Unit Tests
-      run: pytest --cov=./src --cov-report=xml
+      run: |
+        sh ./dev.sh setup-dev
+        pytest --cov=./src --cov-report=xml
 
     - uses: codecov/codecov-action@v1
       with:
