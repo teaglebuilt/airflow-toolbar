@@ -1,10 +1,11 @@
 import inspect
 import logging
 import unittest
+import importlib
 
 from airflow.plugins_manager import AirflowPlugin, is_valid_plugin
 
-import src
+plugin = importlib.import_module('src')
 
 
 def isplugin(x):
@@ -16,7 +17,7 @@ def isplugin(x):
 
 def islocalmodule(x):
     if inspect.ismodule(x):
-        return src.__name__ in x.__name__
+        return plugin.__name__ in x.__name__
     return False
 
 
@@ -40,9 +41,9 @@ class TestPlugins(unittest.TestCase):
     """
     @classmethod
     def setUpClass(cls):
-        cls.plugins = get_all_plugins(module=src)
+        cls.plugins = get_all_plugins(module=plugin)
 
     def test_plugin_validity(self):
-        for name, plugin in self.plugins:
+        for name, plg in self.plugins:
             logging.info("Validating %s", name)
-            self.assertTrue(is_valid_plugin(plugin, ['AirflowToolbar']))
+            self.assertTrue(is_valid_plugin(plg, ['AirflowToolbar']))

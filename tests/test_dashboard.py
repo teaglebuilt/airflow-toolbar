@@ -5,7 +5,7 @@ from werkzeug.wrappers import Response
 from flask import config
 
 
-def test_dashboard_view():
+def test_dashboard_view(mock_env):
     app = application.create_app(testing=True)
     app.config['WTF_CSRF_ENABLED'] = False
     client = app.test_client()
