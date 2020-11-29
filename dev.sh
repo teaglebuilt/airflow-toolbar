@@ -5,6 +5,7 @@ setup_dev() {
     if [ -f .env ]; then
     # Load Environment Variables
         export AIRFLOW_HOME=$(pwd)
+        export PYTHONPATH=$(pwd)
         # export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
     fi
 
