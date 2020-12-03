@@ -11,4 +11,3 @@ with mock_airflow_db() as db:
         client = app.test_client()
         resp = client.get('http://localhost:8080/admin/dashboardview/')
         assert resp.status_code == 200
-    
