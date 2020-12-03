@@ -28,14 +28,14 @@ jobs:
         echo ::set-output name=version:: \
           $(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
       
-    # - name: Setup Workspace
-    #   run: |
-    #     sh ./dev.sh setup-dev
-    #     pytest --cov=./src --cov-report=xml
+    - name: Setup Workspace
+      run: |
+        sh ./dev.sh setup-dev
+        pytest --cov=./src --cov-report=xml
 
-    # - uses: codecov/codecov-action@v1
-    #   with:
-    #     token: ${{ secrets.CODECOV_TOKEN }}
-    #     file: ./coverage.xml
-    #     flags: unittest
-    #     verbose: true
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittest
+        verbose: true
